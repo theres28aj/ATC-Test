@@ -1,5 +1,5 @@
 # Deployment Steps
-1. Build and Push Docker Image (Optional)
+1. Build and Push Docker Image.
      Navigate to `app/` directory
    Push the image: `docker push <dockerhub-repository>/webapp`
 
