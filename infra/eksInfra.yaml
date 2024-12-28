@@ -1,5 +1,6 @@
 # using AWS CloudFormation IAC template for my convenience.  
 
+# i have added basic infra as of now 
 Resources:
   EKSCluster:
     Type: AWS::EKS::Cluster
