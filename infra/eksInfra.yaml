@@ -1,0 +1,25 @@
+# using AWS CloudFormation IAC template for my convenience.  
+
+Resources:
+  EKSCluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Name: ATCWebAppCluster
+      ResourcesVpcConfig:
+        SubnetIds:
+          - subnet-xxxxxxxx
+          - subnet-xxxxxxxx
+        SecurityGroupIds:
+          - sg-xxxxxxxx
+  NodeGroup:
+    Type: AWS::EKS::Nodegroup
+    Properties:
+      ClusterName: !Ref EKSCluster
+      NodeRole: arn:aws:iam::xxxxxxxxxxxx:role/EKSNodeRole
+      Subnets:
+        - subnet-xxxxxxxx
+        - subnet-xxxxxxxx
+      ScalingConfig:
+        MinSize: 1
+        MaxSize: 3
+        DesiredSize: 2

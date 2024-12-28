@@ -1,0 +1,7 @@
+# Dockerfile - 
+# specifying the base image to be used and path to which file content to be copied inside container. 
+
+
+FROM nginx:alpine
+#COPY index.html  /valid path inside the container where Nginx can serve the index.html file
+COPY index.html /usr/share/nginx/html/index.html

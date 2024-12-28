@@ -1,0 +1,25 @@
+# Deployment Steps
+1. Build and Push Docker Image (Optional)
+     Navigate to `app/` directory
+   Push the image: `docker push <dockerhub-repository>/webapp`
+
+2. Provision Infrastructure with CloudFormation
+   Navigate to `infra/` directory.\
+   Deploy the EKS Cluster: `aws cloudformation deploy --template-file eks-template.yaml --stack-name WebAppStack`
+
+3. Apply Kubernetes Manifests
+   Navigate to `kubernetes/` diredctory
+   Deploy the application: `kubectl apply -f deployment.yaml`
+   Expose the application: `kubectl apply -f service.yaml`
+
+4. Set Up Monitoring
+   Navigate to `monitoring/` directory.
+    Deploy the Prometheus ConfigMap: `kubectl apply -f prometheus-config.yaml`
+
+5. Access the Application
+   Get the external IP: `kubectl get svc webapp-service`
+   Open the applicati0n using the external IP.
+
+6. Monitoring
+   Install Prometheus in the cluster
+   Access the Prometheus dashboard: `kubectl port-forward svc/prometheus 9090:9090`.
